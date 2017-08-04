@@ -23,4 +23,16 @@ header {
   overflow: auto;
 }
 
+#hotelinfo {
+  margin: 0px 10px;
+}
+
+#hotelPic {
+  width: 100%;
+}
+
+#hotelPrices {
+  width: 35%;
+}
+
 @media screen {}
