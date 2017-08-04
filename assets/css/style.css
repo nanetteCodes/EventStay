@@ -1,13 +1,26 @@
-/*#searchText {
-  width: 50%;
-}*/
-
-#userSearch{
-  padding: 10% 20%;
+#userSearch {
+  padding: 0 20% 7% 20%;
 }
 
 header {
   font-family: 'Bungee Shade', cursive;
-  font-size: 80px;
+  font-size: 620%;
   text-shadow: 4px 4px 4px #aaa;
-  }
+  position: relative;
+  bottom: 400px;
+}
+
+.card-panel {
+  @extend .green,
+  .lighten-4;
+}
+
+.parallax-container {
+  margin-top: 20px;
+}
+
+.clearfix {
+  overflow: auto;
+}
+
+@media screen {}

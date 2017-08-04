@@ -26,7 +26,9 @@
   <!--page header-->
   <div class="section white">
     <div class="row container">
+      <div class="col x s12">
       <header class="center-align">EventStay</header>
+      </div>
     </div>
   </div>
   <!--user search-->
@@ -48,14 +50,37 @@
     
     <div class="row">
       <div class="col s12">
-        <!--event results -->
-        <ul id="eventResults">
-          <li class="card-panel teal z-depth-4"> <span class="white-text">Text 1</span></li>
-          <li class="card-panel teal z-depth-4"> <span class="white-text">Text 2</span></li>
-          <li class="card-panel teal z-depth-4"> <span class="white-text">Text 3</span></li>
-          <li class="card-panel teal z-depth-4"> <span class="white-text">Text 4</span></li>
-          <li class="card-panel teal z-depth-4"> <span class="white-text">Text 5</span></li>
-        </ul>
+
+        <ul class="collapsible popout" data-collapsible="accordion" id="eventResults">
+
+          <!-- band name and image first list item (add ID)--> 
+          <li class="card-panel clearfix">
+              <!-- band js populated image (add ID)-->
+              <img class="circle responsive-img col s2" src="assets/images/concert2.jpg" alt="" > 
+            <!--band js populated name and link to website (add ID)-->
+            <div class="col s10">
+              <span class="black-text">
+                This is a square image. Add the "circle" class to it to make it appear circular.
+              </span>
+            </div>
+            </li>
+          
+          <li>
+            <!--band populated event list  goes here (add ID)-->
+            <div class="collapsible-header">
+              <span class ="col s10"> Event Name and Event Location</span>
+              <span class ="col s2"> Price in URL</span>
+            </div>
+
+            <!--hotel populated events go here (add ID) -->
+            <div class="collapsible-body clearfix">
+              <span class =" col s10">Lorem ipsum dolor sit amet gafdgdfgdfg.</span>
+              <span class ="col s2"> more info will go here GSFGasg </span>
+            </div>
+          </li>
+    
+      
+  </ul>
       </div>
     </div>
   </div>
