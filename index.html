@@ -4,39 +4,77 @@
 <head>
   <meta charset="UTF-8">
   <title>EventStay</title>
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css?family=Bungee+Shade" rel="stylesheet">
+ <!--  <link href="https://fonts.googleapis.com/css?family=Carrois+Gothic+SC" rel="stylesheet"> -->
   <!-- CSS -->
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
   <!-- Metrialize Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
+
   <!-- JQuery -->
   <script src="https://code.jquery.com/jquery.js"></script>
 </head>
 
 <body>
+  <!--parallax image-->
   <div class="parallax-container">
     <div class="parallax">
-      <img src="assets/images/rockConcert.jpg">
+      <img id = "parallax1" src="assets/images/concert2.jpg">
     </div>
   </div>
+  <!--page header-->
+  <div class="section white">
+    <div class="row container">
+      <header class="center-align">EventStay</header>
+    </div>
+  </div>
+  <!--user search-->
   <div class="container">
-    <div class="row section white">
-      <h1 class="header">EventStay</h1>
+    <div class="row">
+      <div class="col s12">
+        <div class="input-field" id="userSearch">
+          <form>
+            <!-- users search input -->
+            <input placeholder="search" id="searchText" type="text" class="validate">
+            <label for="searchText"></label>
+            </br>
+            <!-- submit btn -->
+            <a class="waves-effect waves-light btn z-depth-4" onclick="Materialize.showStaggeredList('#eventResults')">Submit</a>
+          </form>
+        </div>
+      </div>
     </div>
-    <div class="input-field col s6">
-      <form>
-        <!-- users search input -->
-        <input placeholder="search" id="searchText" type="text" class="validate">
-        <label for="searchText"></label>
-        <!-- submit btn -->
-        <a class="waves-effect waves-light btn">Submit</a>
-      </form>
+    
+    <div class="row">
+      <div class="col s12">
+        <!--event results -->
+        <ul id="eventResults">
+          <li class="card-panel teal z-depth-4"> <span class="white-text">Text 1</span></li>
+          <li class="card-panel teal z-depth-4"> <span class="white-text">Text 2</span></li>
+          <li class="card-panel teal z-depth-4"> <span class="white-text">Text 3</span></li>
+          <li class="card-panel teal z-depth-4"> <span class="white-text">Text 4</span></li>
+          <li class="card-panel teal z-depth-4"> <span class="white-text">Text 5</span></li>
+        </ul>
+      </div>
     </div>
   </div>
+  <!-- container closing -->
   
-  <!-- Place for js divs -->
+  
+  <!-- Place for js divs (code in here) ===================================== -->
+
+
+
+
+
+
+
+
+
+  <!--=========================================================================-->
 
  
-
     <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
           

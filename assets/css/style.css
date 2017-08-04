@@ -1,0 +1,13 @@
+/*#searchText {
+  width: 50%;
+}*/
+
+#userSearch{
+  padding: 10% 20%;
+}
+
+header {
+  font-family: 'Bungee Shade', cursive;
+  font-size: 80px;
+  text-shadow: 4px 4px 4px #aaa;
+  }
