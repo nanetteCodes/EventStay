@@ -12,7 +12,7 @@
   <!-- Metrialize Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
   <!-- JQuery -->
-  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
 
@@ -36,7 +36,7 @@
     <div class="row">
       <div class="col s12">
         <div class="input-field clearfix" id="userSearch">
-          <form>
+          <form id="search">
             <!-- users search input -->
             <input placeholder="search" id="searchText" type="text" class="validate">
             <label for="searchText"></label>
@@ -56,21 +56,16 @@
           <!-- band name and image first list item (add ID)--> 
           <li class="card-panel clearfix">
               <!-- band js populated image (add ID)-->
-              <img class="circle responsive-img col s2" src="assets/images/concert2.jpg" alt="" > 
+              <img class="circle responsive-img col s2" id="band-image" src="assets/images/concert2.jpg" alt="" > 
             <!--band js populated name and link to website (add ID)-->
             <div class="col s10">
-              <span class="black-text">
-                This is a square image. Add the "circle" class to it to make it appear circular.
+              <span class="black-text" id="band-name">
+                Artist or Band
               </span>
             </div>
             </li>
           
-          <li>
-            <!--band populated event list  goes here (add ID)-->
-            <div class="collapsible-header">
-              <span class ="col s10"> Event Name and Event Location</span>
-              <span class ="col s2"> Price in URL</span>
-            </div>
+          <li>     
 
             <!--hotel populated events go here (add ID) -->
             <div class="collapsible-body clearfix" id = "Hoevents">
@@ -118,17 +113,7 @@
         </footer>
   
   
-  <!-- Place for js divs (code in here) ===================================== -->
 
-
-
-
-
-
-
-
-
-  <!--=========================================================================-->
 
  
     <!-- Compiled and minified JavaScript -->
@@ -139,6 +124,9 @@
 
   <!-- Hoetels javascript -->
   <script type="text/javascript" src="assets/javascript/hoetels.js"></script>
+
+  <!-- Event javascript -->
+  <script type="text/javascript" src="assets/javascript/events.js"></script>
 </body>
 
 </html>
