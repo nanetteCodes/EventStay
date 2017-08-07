@@ -9,7 +9,7 @@ header {
   font-size: 620%;
   text-shadow: 4px 4px 4px #aaa;
   position: relative;
-  bottom: 400px;
+  bottom: 430px;
 }
 
 .card-panel {
@@ -26,6 +26,21 @@ header {
   overflow: auto;
 }
 
+
+#hotelinfo {
+  margin: 0px 10px;
+}
+
+#hotelPic {
+  width: 100%;
+}
+
+#hotelPrices {
+  width: 35%;
+}
+
+@media screen {}
+=======
 .page-footer {
   
 }
@@ -49,3 +64,4 @@ header {
     font-size: 350%;
   }
 }
+
