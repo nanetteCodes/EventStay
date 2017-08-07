@@ -14,6 +14,8 @@ var options = [{
 }, ];
 Materialize.scrollFire(options);
 
+
+
 //click function to move to anchor element
 function scrollToAnchor(aid) {
   var aTag = $("a[name='" + aid + "']");
@@ -23,3 +25,4 @@ function scrollToAnchor(aid) {
 $("#submit-search").click(function() {
   scrollToAnchor('id3');
 });
+
