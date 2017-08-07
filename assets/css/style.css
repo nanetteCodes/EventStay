@@ -1,7 +1,7 @@
+
 #userSearch {
-  padding: 0 20% 7% 20%;
-  position: relative;
-  bottom: 460px;
+  padding: 0 20%;
+  bottom: 100px;
 }
 
 header {
@@ -21,9 +21,11 @@ header {
   margin-top: 20px;
 }
 
+
 .clearfix {
   overflow: auto;
 }
+
 
 #hotelinfo {
   margin: 0px 10px;
@@ -38,3 +40,28 @@ header {
 }
 
 @media screen {}
+=======
+.page-footer {
+  
+}
+@media only screen and (max-width: 700px) {
+  
+
+  header{
+    font-size: 500%;
+    padding: 0 10%;
+  }
+}
+
+@media only screen and (max-width: 699px) {
+  header{
+    font-size: 400%
+  }
+}
+
+@media only screen and (max-width: 520px){
+  header {
+    font-size: 350%;
+  }
+}
+
