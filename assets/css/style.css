@@ -1,5 +1,7 @@
 #userSearch {
   padding: 0 20% 7% 20%;
+  position: relative;
+  bottom: 460px;
 }
 
 header {
@@ -7,7 +9,7 @@ header {
   font-size: 620%;
   text-shadow: 4px 4px 4px #aaa;
   position: relative;
-  bottom: 400px;
+  bottom: 430px;
 }
 
 .card-panel {
