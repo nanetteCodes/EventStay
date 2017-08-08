@@ -25,4 +25,3 @@ function scrollToAnchor(aid) {
 $("#submit-search").click(function() {
   scrollToAnchor('id3');
 });
-

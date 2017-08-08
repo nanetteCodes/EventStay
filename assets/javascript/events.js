@@ -12,126 +12,126 @@ $("#eventResults").hide();
 var lat;
 var lon;
 var newList;
-var checkArray=[];
+var checkArray = [];
 
 
 // *Calling ajax for events
 // ==========================
-function findEvent(events){
+function findEvent(events) {
 
-	// var for query url
-	var queryURL = "https://api.seatgeek.com/2/events?performers.slug=" + artist + clientId;
-
-
-	$.ajax({
-      url: queryURL,
-      method: "GET"
-    }).done(function(response2) {
-
-      // Printing the entire object to console
-      console.log(response2);
-
-// *Construct HTML 
-// ====================
-
-	// if prev searches... remove items 
-	$(".result").remove();
+  // var for query url
+  var queryURL = "https://api.seatgeek.com/2/events?performers.slug=" + artist + clientId;
 
 
-	for(var i = 0; i<response2.events.length; i++){
-		var object = response2.events[i];
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  }).done(function(response2) {
 
-	// set variables for info i need
-		lat = object.venue.location.lat;
-		lon = object.venue.location.lon;
-	var eventName = object.title;
-	var tickets = $("<a>").attr("href",object.url).text("Buy Tickets");
-		tickets.attr("target", "_blank");
-	var eventDate = object.datetime_utc;
-	var eventCity = object.venue.display_location;
+    // Printing the entire object to console
+    console.log(response2);
 
+    // *Construct HTML 
+    // ====================
 
-
-	// Generating new div 
-			newList = $("<li>");
-		var newEvent = $("<div>");
-		$(newEvent).addClass("collapsible-header result");
-		$(newEvent).attr("data-Index", i);
-		$(newEvent).attr("lat", lat);
-		$(newEvent).attr("lon", lon);
-
-	// making first col for event name and location
-		var col1= $("<span>");
-		$(col1).addClass("col s10");
-	
-	// append to col1
-	col1.append(eventName + "<br/>" + eventCity + "<br/>" + eventDate);
-		
-
-	// making second col for ticket url
-		var col2 = $("<span>");
-		$(col2).addClass("col s2"); 
-
-	// append to col2
-	col2.append(tickets);
+    // if prev searches... remove items 
+    $(".result").remove();
 
 
-	// append columns to div
-   	newEvent.append(col1, col2);
+    for (var i = 0; i < response2.events.length; i++) {
+      var object = response2.events[i];
 
-    var body = $("<div>");
-	$(body).addClass("collapsible-body clearfix");
-	$(body).attr("id", "body"+i)
-   	// append div to new list
-   	newList.append(newEvent,body);
-   	
+      // set variables for info i need
+      lat = object.venue.location.lat;
+      lon = object.venue.location.lon;
+      var eventName = object.title;
+      var tickets = $("<a>").attr("href", object.url).text("Buy Tickets");
+      tickets.attr("target", "_blank");
+      var eventDate = moment(object.datetime_utc).format("MM/DD/YYYY");
+      var eventCity = object.venue.display_location;
 
-   	$("#eventResults").append(newList);
 
-   // calling hoetel function
-   // hoeTels();
 
-};     
-});
+      // Generating new div 
+      newList = $("<li>");
+      var newEvent = $("<div>");
+      $(newEvent).addClass("collapsible-header result");
+      $(newEvent).attr("data-Index", i);
+      $(newEvent).attr("lat", lat);
+      $(newEvent).attr("lon", lon);
+
+      // making first col for event name and location
+      var col1 = $("<span>");
+      $(col1).addClass("col s10");
+
+      // append to col1
+      col1.append(eventName + "<br/>" + eventCity + "<br/>" + eventDate);
+
+
+      // making second col for ticket url
+      var col2 = $("<span>");
+      $(col2).addClass("col s2");
+
+      // append to col2
+      col2.append(tickets);
+
+
+      // append columns to div
+      newEvent.append(col1, col2);
+
+      var body = $("<div>");
+      $(body).addClass("collapsible-body clearfix");
+      $(body).attr("id", "body" + i)
+      // append div to new list
+      newList.append(newEvent, body);
+
+
+      $("#eventResults").append(newList);
+
+      // calling hoetel function
+      // hoeTels();
+
+    };
+  });
 };
 
 
 // *Calling ajax for artist
 // ==========================
-function findArtist(artist){
-	var queryURL1 = "https://api.seatgeek.com/2/performers?slug=" + artist + clientId;
+function findArtist(artist) {
+  var queryURL1 = "https://api.seatgeek.com/2/performers?slug=" + artist + clientId;
 
-	$.ajax({
-      url: queryURL1,
-      method: "GET"
-    }).done(function(response) {
+  $.ajax({
+    url: queryURL1,
+    method: "GET"
+  }).done(function(response) {
 
-      // Printing the entire object to console
-      // console.log(response);
+    // Printing the entire object to console
+    // console.log(response);
 
-      // image, name, upcoming events
+    // image, name, upcoming events
 
-      var artistName = response.performers[0].short_name;
-     	// console.log(artistName);
+    var artistName = response.performers[0].short_name;
+    // console.log(artistName);
 
-      var bandImage = response.performers[0].image;
-      	// console.log(bandImage);
+    var bandImage = response.performers[0].image;
+    // console.log(bandImage);
 
-// *Construct HTML
-// ================
-	// Clear text and append artist name
-	$("#band-name").empty();
-	$("#band-name").append(artistName);
+    // *Construct HTML
+    // ================
+    // Clear text and append artist name
+    $("#band-name").empty();
+    $("#band-name").append(artistName);
 
-	// Clear img and attr new img
-	$("#band-image").empty();
-	$("#band-image").attr("src", bandImage);
+    // Clear img and attr new img
+    $("#band-image").empty();
+    $("#band-image").attr("src", bandImage);
 
 
-});
+  });
 };
 
-  
+
 
 
 
@@ -139,126 +139,125 @@ function findArtist(artist){
 // *Capture user input in search box..
 // =====================================
 
-  	// Event handler for user clicking the select-artist button
-$("#search").submit(function(event){
-	$("#eventResults").show();
-   	// Preventing the button from trying to submit the form
-    event.preventDefault();
+// Event handler for user clicking the select-artist button
+$("#search").submit(function(event) {
+  $("#eventResults").show();
+  // Preventing the button from trying to submit the form
+  event.preventDefault();
 
-    // Storing the artist name
-   artist = $("#searchText").val().toLowerCase().trim().split(" ").join("-");
-    	// console.log(artist);
-    
-    // Running the findEvent function (passing in the artist as an argument)
-    findEvent(event);
-    findArtist(artist);
-    
+  // Storing the artist name
+  artist = $("#searchText").val().toLowerCase().trim().split(" ").join("-");
+  // console.log(artist);
+
+  // Running the findEvent function (passing in the artist as an argument)
+  findEvent(event);
+  findArtist(artist);
+
 
 });
 
 
-$(document).on("click", ".result", function(){
+$(document).on("click", ".result", function() {
 
-	 var body = $("<div>");
-	$(body).addClass("collapsible-body clearfix");
+  var body = $("<div>");
+  $(body).addClass("collapsible-body clearfix");
 
-	// $(this).append(body);
+  // $(this).append(body);
 
-	var lon= $(this).attr("lon");
+  var lon = $(this).attr("lon");
 
-	var lat= $(this).attr("lat");
+  var lat = $(this).attr("lat");
 
-	var id= $(this).attr("data-Index");
+  var id = $(this).attr("data-Index");
 
-var hotelRooms = ["assets/images/room1.jpg","assets/images/room2.jpg","assets/images/room3.jpg","assets/images/room4.jpg","assets/images/room5.jpg"]
+  var hotelRooms = ["assets/images/room1.jpg", "assets/images/room2.jpg", "assets/images/room3.jpg", "assets/images/room4.jpg", "assets/images/room5.jpg"]
 
-var queryURL = "https://hotwire.herokuapp.com/v1/deal/hotel?format=json&apikey=8bya58qw23u2q33c7cmwb34d&limit=10&dest=="+lat+","+lon+"&distance=*~30&starrating=4~*&sort=price&sortorder=asc";
+  var queryURL = "https://hotwire.herokuapp.com/v1/deal/hotel?format=json&apikey=8bya58qw23u2q33c7cmwb34d&limit=10&dest==" + lat + "," + lon + "&distance=*~30&starrating=4~*&sort=price&sortorder=asc";
 
-// var queryURL = "http://api.hotwire.com/v1/deal/hotel?apikey=8bya58qw23u2q33c7cmwb34d&format=json&limit=5&dest=="+lat+","+lon+"&distance=*~30&starrating=4~*&sort=price&sortorder=asc";
-
-
-	if (checkArray.indexOf(id)===-1) {
-		checkArray.push(id);
-
-$.ajax({
-		url:queryURL,
-		method: "GET"
-	})
-	.done(function(response){
-   
+  // var queryURL = "http://api.hotwire.com/v1/deal/hotel?apikey=8bya58qw23u2q33c7cmwb34d&format=json&limit=5&dest=="+lat+","+lon+"&distance=*~30&starrating=4~*&sort=price&sortorder=asc";
 
 
+  if (checkArray.indexOf(id) === -1) {
+    checkArray.push(id);
 
-		for (var i = 0; i < 5; i++) {
-			// console.log(response);
-
-		 var object2 = JSON.parse(response);
-			console.log(object2);
-			var price = object2.Result[i].Price;
-			var hotelURL = object2.Result[i].Url;
-			var starRating = object2.Result[i].StarRating;
-			var savingsPercentage = object2.Result[i].SavingsPercentage;
-			var city = object2.Result[i].City;
-			var state = object2.Result[i].StateCode;
-			var Neighborhood = object2.Result[i].Neighborhood;
-			var nights = object2.Result[i].NightDuration;
-
-			console.log(price, city, state);
-		
-
-		var hotelImg = $("<span>");
-		$(hotelImg).addClass("col s4");
-		$(hotelImg).attr("id","hotelImg");
-
-		var hotelPic = $("<img>");
-		hotelPic.attr("src", hotelRooms[i]);
-		hotelPic.attr("id","hotelPic");
-		hotelImg.append(hotelPic)
-
-
-		var hotelArea = $("<span>");
-		$(hotelArea).addClass("col s6");
-		$(hotelArea).attr("id","hotelinfo")
-		hotelArea.append("<b>"+Neighborhood+"</b><br/>");
-		hotelArea.append(city + ", "+ state);
-		hotelArea.append("<br/>Rating: " + starRating + " &#9734;&#9734;&#9734;&#9734;")
-		hotelArea.append("<br/>"+ "<a href='" + hotelURL + "' " + "> Hotwire LINK</a>" );
-
-		var priceInfo = $("<span>");
-		$(priceInfo).addClass("col s2");
-		$(priceInfo).attr("id","hotelPrices");
-		priceInfo.append("<h2>$" + Math.trunc(price) + "</h2><br/>Per Night</h1><br/>A " + savingsPercentage + "% Discount");
-			// console.log(priceInfo, hotelArea);
-		
-		var row = $("<div>");
-		$(row).addClass("row valign-wrapper");
-		row.append(hotelImg, hotelArea, priceInfo);
-
-		console.log(id);
-
-		$("#body"+id).append(row);
-
-			// console.log(row);
-
-		// body.append(row);
-		// 	// console.log(body);
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+      })
+      .done(function(response) {
 
 
 
-		// newList.append(body);
-			// console.log(newList);
 
-		// $("#eventResults").append(newList);
+        for (var i = 0; i < 5; i++) {
+          // console.log(response);
 
-};
+          var object2 = JSON.parse(response);
+          console.log(object2);
+          var price = object2.Result[i].Price;
+          var hotelURL = object2.Result[i].Url;
+          var starRating = object2.Result[i].StarRating;
+          var savingsPercentage = object2.Result[i].SavingsPercentage;
+          var city = object2.Result[i].City;
+          var state = object2.Result[i].StateCode;
+          var Neighborhood = object2.Result[i].Neighborhood;
+          var nights = object2.Result[i].NightDuration;
 
-		
+          console.log(price, city, state);
 
-});
-}
-	else {
-		console.log("Stop double-clicking");
-	}
+
+          var hotelImg = $("<span>");
+          $(hotelImg).addClass("col s4");
+          $(hotelImg).attr("id", "hotelImg");
+
+          var hotelPic = $("<img>");
+          hotelPic.attr("src", hotelRooms[i]);
+          hotelPic.attr("id", "hotelPic");
+          hotelImg.append(hotelPic)
+
+
+          var hotelArea = $("<span>");
+          $(hotelArea).addClass("col s6");
+          $(hotelArea).attr("id", "hotelinfo")
+          hotelArea.append("<b>" + Neighborhood + "</b><br/>");
+          hotelArea.append(city + ", " + state);
+          hotelArea.append("<br/>Rating: " + starRating + " &#9734;&#9734;&#9734;&#9734;")
+          hotelArea.append("<br/>" + "<a href='" + hotelURL + "' " + "> Hotwire LINK</a>");
+
+          var priceInfo = $("<span>");
+          $(priceInfo).addClass("col s2");
+          $(priceInfo).attr("id", "hotelPrices");
+          priceInfo.append("<h2>$" + Math.trunc(price) + "</h2><br/>Per Night</h1><br/>A " + savingsPercentage + "% Discount");
+          // console.log(priceInfo, hotelArea);
+
+          var row = $("<div>");
+          $(row).addClass("row valign-wrapper");
+          row.append(hotelImg, hotelArea, priceInfo);
+
+          console.log(id);
+
+          $("#body" + id).append(row);
+
+          // console.log(row);
+
+          // body.append(row);
+          //  // console.log(body);
+
+
+
+          // newList.append(body);
+          // console.log(newList);
+
+          // $("#eventResults").append(newList);
+
+        };
+
+
+
+      });
+  } else {
+    console.log("Stop double-clicking");
+  }
 });
 
 
@@ -266,10 +265,3 @@ $.ajax({
 
 
 // $(document).on('click','.result',function(){});
-
-
-
-
-
-
-
