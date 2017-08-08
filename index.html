@@ -41,13 +41,16 @@
             <label for="searchText"></label>
             </br>
             <!-- submit btn -->
-            <a class="waves-effect waves-light btn z-depth-4" id="submit-search" onclick="Materialize.showStaggeredList('#eventResults')">Submit</a>
+            <button type="submit" class="waves-effect waves-light btn z-depth-4" id="submit-search" onclick="Materialize.showStaggeredList('#eventResults')">Submit</button>
           </form>
         </div>
       </div>
     </div>
     <div class="row">
       <div class="col s12">
+
+        <a name="id3"/>
+
         <ul class="collapsible popout" data-collapsible="accordion" id="eventResults">
           <!-- band name and image first list item (add ID)-->
           <li class="card-panel clearfix">
@@ -66,7 +69,7 @@
             </div>
           </li>
           <!-- tag for scrollToAnchor js effect -->
-          <a name="id3" />
+
         </ul>
       </div>
     </div>
