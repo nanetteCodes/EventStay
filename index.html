@@ -42,7 +42,9 @@
             <label for="searchText"></label>
             </br>
             <!-- submit btn -->
-            <a class="waves-effect waves-light btn z-depth-4" onclick="Materialize.showStaggeredList('#eventResults')">Submit</a>
+            <a class="waves-effect waves-light btn z-depth-4" id="submit-search" onclick="Materialize.showStaggeredList('#eventResults')">Submit</a>
+            <!-- reset btn 
+            <a class="waves-effect waves-light btn z-depth-4" id="reset-search" type="reset">Clear Search Field</a> -->
           </form>
         </div>
       </div>
@@ -105,6 +107,10 @@
           
     <!--Javascript-->
     <script type="text/javascript" src="assets/javascript/layout.js"></script>
+
+    <!-- link to javascript file -->
+  	<script type="text/javascript" src="assets/javascript/local-storage.js"></script>
+
 </body>
 
 </html>
