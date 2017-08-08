@@ -5,7 +5,7 @@
     // Capture Button Click
     $("#submit-search").on("click", function(event) {
 	      // prevent page from refreshing when form tries to submit itself
-	      event.preventDefault();
+	      // event.preventDefault();
 
 	      // Capture user input and store them into a variable
 	      var eventSearch = $("#searchText").val().trim();
