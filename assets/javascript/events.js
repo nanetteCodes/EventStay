@@ -12,6 +12,7 @@ $("#eventResults").hide();
 var lat;
 var lon;
 var newList;
+var checkArray=[];
 
 
 // *Calling ajax for events
@@ -176,7 +177,8 @@ var queryURL = "https://hotwire.herokuapp.com/v1/deal/hotel?format=json&apikey=8
 // var queryURL = "http://api.hotwire.com/v1/deal/hotel?apikey=8bya58qw23u2q33c7cmwb34d&format=json&limit=5&dest=="+lat+","+lon+"&distance=*~30&starrating=4~*&sort=price&sortorder=asc";
 
 
-
+	if (checkArray.indexOf(id)===-1) {
+		checkArray.push(id);
 
 $.ajax({
 		url:queryURL,
@@ -253,6 +255,10 @@ $.ajax({
 		
 
 });
+}
+	else {
+		console.log("Stop double-clicking");
+	}
 });
 
 
