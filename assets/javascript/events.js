@@ -229,7 +229,7 @@ $(document).on("click", ".result", function() {
           hotelArea.append("<b>" + Neighborhood + "</b><br/>");
           hotelArea.append(city + ", " + state);
           hotelArea.append("<br/>Rating: " + starRating + " &#9734;&#9734;&#9734;&#9734;")
-          hotelArea.append("<br/>" + "<a href='" + hotelURL + "target='_blank'>Hotwire LINK</a>");
+          hotelArea.append("<br/>" + "<a href='" + hotelURL + "'target='_blank'>Hotwire LINK</a>");
 
           var priceInfo = $("<span>");
           $(priceInfo).addClass("col s2");
