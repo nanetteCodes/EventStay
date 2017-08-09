@@ -145,6 +145,13 @@ $("#search").submit(function(event) {
   // Preventing the button from trying to submit the form
   event.preventDefault();
 
+  // Reset the array so that a user can search for another artist again and have hotels populate
+  checkArray = [];
+
+  //remove body containing hotel info from previous searches
+  $(".collapsible-body").remove();
+
+
   // Storing the artist name
   artist = $("#searchText").val().toLowerCase().trim().split(" ").join("-");
   // console.log(artist);
@@ -190,7 +197,7 @@ $(document).on("click", ".result", function() {
 
 
         for (var i = 0; i < 5; i++) {
-          // console.log(response);
+          console.log(response);
 
           var object2 = JSON.parse(response);
           console.log(object2);
@@ -222,7 +229,7 @@ $(document).on("click", ".result", function() {
           hotelArea.append("<b>" + Neighborhood + "</b><br/>");
           hotelArea.append(city + ", " + state);
           hotelArea.append("<br/>Rating: " + starRating + " &#9734;&#9734;&#9734;&#9734;")
-          hotelArea.append("<br/>" + "<a href='" + hotelURL + "' " + "> Hotwire LINK</a>");
+          hotelArea.append("<br/>" + "<a href='" + hotelURL + "target='_blank'>Hotwire LINK</a>");
 
           var priceInfo = $("<span>");
           $(priceInfo).addClass("col s2");
