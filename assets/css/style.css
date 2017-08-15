@@ -11,6 +11,9 @@ header {
   bottom: 430px;
 }
 
+.hotel-font {
+  color: #1E90FF;
+}
 
 .card-panel {
   @extend .green,
@@ -68,6 +71,11 @@ body {
   font-size: 760%;
 }
 
+#no-event {
+  font-family: 'Saira Extra Condensed', sans-serif;
+  color: red;
+  font-size: 300%;
+}
 
 @media only screen and (max-width: 700px) {
 
