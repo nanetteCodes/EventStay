@@ -32,7 +32,7 @@ function findEvent(events) {
   }).done(function(response2) {
 
     // Printing the entire object to console
-    console.log(response2);
+    //console.log(response2);
 
     // *Construct HTML 
     // ====================
@@ -135,7 +135,7 @@ function findArtist(artist) {
     // console.log(artistName);
 
     var bandImage = response.performers[0].image;
-    // console.log(bandImage);
+    console.log("Band Image: " + bandImage);
 
     // *Construct HTML
     // ================
@@ -143,10 +143,12 @@ function findArtist(artist) {
     // Append artist name
     $("#band-name").append(artistName);
    
-    // Attr new img
-    $("#band-image").attr("src", bandImage);
-
-
+    // Attr band image
+    if (bandImage === null) { // If no band image is found, use the stock image
+    	$("#band-image").attr("src", "assets/images/concert2.jpg");
+    } else {
+        $("#band-image").attr("src", bandImage);
+    }
   });
 };
 
