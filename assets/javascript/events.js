@@ -19,6 +19,9 @@ var checkArray = [];
 // ==========================
 function findEvent(events) {
 
+  // Clear no-event message from previous search
+    $("#no-event").empty();
+
   // var for query url
   var queryURL = "https://api.seatgeek.com/2/events?performers.slug=" + artist + clientId;
 
@@ -29,7 +32,7 @@ function findEvent(events) {
   }).done(function(response2) {
 
     // Printing the entire object to console
-    console.log(response2);
+    //console.log(response2);
 
     // *Construct HTML 
     // ====================
@@ -37,6 +40,13 @@ function findEvent(events) {
     // if prev searches... remove items 
     $(".result").remove();
 
+    // number of events returned
+    console.log("Number of Events Returned: " + response2.events.length);
+
+     // Display message if no scheduled events are found
+    if (response2.events.length === 0) {
+      $("#no-event").append("No scheduled event(s) found.");
+    } 
 
     for (var i = 0; i < response2.events.length; i++) {
       var object = response2.events[i];
@@ -65,8 +75,13 @@ function findEvent(events) {
       $(col1).addClass("col s10");
 
       // append to col1
-      col1.append(eventName + "<br/>" + eventCity + "<br/>" + eventDate);
+      $(col1).append(eventName + "<br/>" + eventCity + "<br/>" + eventDate + "<br/>");
 
+      // let users know to click here for a list of hotels
+      var hotelList = $("<p>").attr("class", "hotel-font").text("Click here for a list of local hotels");
+
+      // append to col1      
+      $(col1).append(hotelList);
 
       // making second col for ticket url
       var col2 = $("<span>");
@@ -99,6 +114,11 @@ function findEvent(events) {
 // *Calling ajax for artist
 // ==========================
 function findArtist(artist) {
+
+  // Clear previous band name and band image
+  $("#band-name").empty();
+  $("#band-image").attr("src", "assets/images/concert2.jpg");
+
   var queryURL1 = "https://api.seatgeek.com/2/performers?slug=" + artist + clientId;
 
   $.ajax({
@@ -115,19 +135,20 @@ function findArtist(artist) {
     // console.log(artistName);
 
     var bandImage = response.performers[0].image;
-    // console.log(bandImage);
+    console.log("Band Image: " + bandImage);
 
     // *Construct HTML
     // ================
-    // Clear text and append artist name
-    $("#band-name").empty();
+
+    // Append artist name
     $("#band-name").append(artistName);
-
-    // Clear img and attr new img
-    $("#band-image").empty();
-    $("#band-image").attr("src", bandImage);
-
-
+   
+    // Attr band image
+    if (bandImage === null) { // If no band image is found, use the stock image
+    	$("#band-image").attr("src", "assets/images/concert2.jpg");
+    } else {
+        $("#band-image").attr("src", bandImage);
+    }
   });
 };
 
@@ -154,11 +175,18 @@ $("#search").submit(function(event) {
 
   // Storing the artist name
   artist = $("#searchText").val().toLowerCase().trim().split(" ").join("-");
-  // console.log(artist);
+  console.log("Artist is: " + artist);
 
   // Running the findEvent function (passing in the artist as an argument)
   findEvent(event);
-  findArtist(artist);
+
+  if (artist !== "") {
+     findArtist(artist);
+  } else {
+     // Clear previous band name and band image
+     $("#band-name").empty();
+     $("#band-image").attr("src", "assets/images/concert2.jpg");
+  }
 
 
 });
