@@ -42,8 +42,9 @@ body {
   flex: 1 0 auto;
 }
 
-#footName {
-  font-family: 'Bungee Shade', cursive;
+#footer-content {
+  padding-bottom: 20px;
+  padding-top: 10px;
 }
 
 
@@ -95,5 +96,12 @@ body {
 @media only screen and (max-width: 520px) {
   header {
     font-size: 350%;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  header {
+    font-size: 300%;
+    left: -8px;
   }
 }
