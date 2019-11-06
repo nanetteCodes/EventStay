@@ -1,6 +1,6 @@
 # EventStay
 
-This site can be viewed live on  [Github](http://nanettejulius.com/EventStay/).
+This site can be viewed live on  [Github](http://nanettecodes.github.io/EventStay/).
 
 **_EventStay is a completely front end app using API calls with Firebase_**
 
